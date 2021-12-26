@@ -8,7 +8,12 @@
     ],
     "config": {
         "preferred-install": "dist",
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "laminas/laminas-dependency-plugin": true,
+            "magento/magento-composer-installer": true
+        }
     },
     "require": {
         "php": "~7.3.0||~7.4.0",
@@ -28,6 +33,8 @@
         "ext-xsl": "*",
         "ext-zip": "*",
         "lib-libxml": "*",
+        "boolfly/module-momo-wallet": "^1.0",
+        "boolfly/module-zalopay": "^1.0",
         "colinmollenhour/cache-backend-file": "~1.4.1",
         "colinmollenhour/cache-backend-redis": "1.11.0",
         "colinmollenhour/credis": "1.11.1",
