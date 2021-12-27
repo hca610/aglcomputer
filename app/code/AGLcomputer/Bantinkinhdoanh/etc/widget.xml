@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget class="AGLcomputer\Bantinkinhdoanh\Block\Bantinkinhdoanh" id="aglcomputer_widget_bantinkinhdoanh">
+        <label>Bản tin kinh doanh</label>
+        <description>Hiển thị bảng chứa các tin kinh doanh từ https://vnexpress.net</description>
+    </widget>
+</widgets>
