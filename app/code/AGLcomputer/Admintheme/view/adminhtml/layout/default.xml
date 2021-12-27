@@ -6,7 +6,7 @@
 	<body>
 		<referenceBlock name="logo">
             <arguments>
-            	<argument name="logo_image_src" xsi:type="string">AGLcomputer_Admintheme/images/logo-square.png</argument>
+            	<argument name="logo_image_src" xsi:type="string">AGLcomputer_Admintheme/images/logo-icon.png</argument>
             </arguments>
         </referenceBlock>
 	</body>
