@@ -30,7 +30,7 @@ $last = array_values(array_slice($data['Exrate'], -1))[0];
 					<span style="color:red">Bán</span> <?= $currency['@attributes']['Sell'] ?> &nbsp;
 				<?php endif; ?>
 				<?php if ($currency['@attributes']['CurrencyCode'] != $last['@attributes']['CurrencyCode']): ?>
-					&nbsp;&nbsp; --- &nbsp;&nbsp;&nbsp;
+					&nbsp; --- &nbsp;&nbsp;&nbsp;
 				<?php endif; ?>
 			<?php endif; ?>
 		<?php endforeach; ?>
