@@ -29,12 +29,11 @@ function getIconUrl($iconName)
 <span>
 	<div style="display: grid;" class="weather-board">
 		<div style="width: inherit;" class="row">
-			<div style="width:initial;" class="column">
-				<h3 class="hanoi"> Hà Nội, Việt Nam </h3>
-				<img src="<?php echo getIconUrl($current->weather[0]->icon); ?>" width="150" height="150">
+			<div style="width:inherit" class="column">
+				<img src="<?php echo getIconUrl($current->weather[0]->icon); ?>" width="170" height="170">
 			</div>
 			<div class="column">
-				Ngày <?php echo date("d/m/Y"); ?>
+				<div>Ngày <?php echo date("d/m/Y"); ?></div>
 				<table class="info">
 					<tbody>
 					<tr>
@@ -61,19 +60,19 @@ function getIconUrl($iconName)
 						</tr>
 					</tbody>
 				</table>
+				<br>
+				<h2 style="margin-left: 5px"><b>Hà Nội, Việt Nam</b></h2>
 			</div>
 		</div>
 	</div>
 </span>
 
 <style>
-h3 {
-	margin-top: unset;
-}
 
 .weather-board {
-	padding: 5px;
 	height: 200px;
+	background: peachpuff;
+	margin: 5px;
 }
 
 .column {
