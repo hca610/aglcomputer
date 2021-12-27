@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget class="AGLcomputer\Tygiatiente\Block\Tygiatiente" id="aglcomputer_widget_tygiatiente">
+        <label>Tỷ giá tiền tệ</label>
+        <description>Hiển thị thông tin tỉ giá tiền tệ</description>
+    </widget>
+</widgets>
