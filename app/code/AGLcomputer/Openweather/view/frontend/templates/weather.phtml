@@ -1,0 +1,99 @@
+<?php
+$ch = curl_init();
+$url = 'http://api.openweathermap.org/data/2.5/onecall?lat=21.027763&lon=105.834160&units=metric&lang=vi&APPID=';
+$api_key = 'b332bec43ae5c63684d76a73c43d718b';
+$url = $url . $api_key;
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_URL, $url);
+$result = curl_exec($ch);
+curl_close($ch);
+
+$today = date('w');
+
+$obj = json_decode($result);
+$lat = $obj->lat;
+$lon = $obj->lon;
+$timezone = $obj->timezone;
+$current = $obj->current;
+$daily = $obj->daily;
+?>
+<?php
+
+function getIconUrl($iconName)
+{
+  return 'http://openweathermap.org/img/wn/' . $iconName . '.png';
+}
+?>
+
+<span>
+	<div style="display: grid;" class="weather-board">
+		<div style="width: inherit;" class="row">
+			<div style="width:initial;" class="column">
+				<h3 class="hanoi"> Hà Nội, Việt Nam </h3>
+				<img src="<?php echo getIconUrl($current->weather[0]->icon); ?>" width="150" height="150">
+			</div>
+			<div class="column">
+				Ngày <?php echo date("d/m/Y"); ?>
+				<table class="info">
+					<tbody>
+					<tr>
+							<td>
+									<p><?php echo ucfirst($current->weather[0]->description); ?></p>
+							</td>
+					</tr>
+						<tr>
+							<td>
+								<i>- Nhiệt độ</i>: <?php echo $current->temp; ?>°C
+							</td>
+							</td>
+							<td>
+								<i>- Độ ẩm</i>: <?php echo $current->humidity; ?>%
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<i>- Áp suất</i>: <?php echo $current->pressure; ?> hPa
+							</td>
+							<td>
+								<i>- Vận tốc gió</i>: <?php echo $current->wind_speed; ?> m/s
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</span>
+
+<style>
+h3 {
+	margin-top: unset;
+}
+
+.weather-board {
+	padding: 5px;
+	height: 200px;
+}
+
+.column {
+  float: left;
+}
+
+
+.row:after {
+  display: table;
+  clear: both;
+  margin-bottom: 5px;
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 0 1px;
+}
+
+table.info td {
+  width: 135px;
+  padding: 3px;
+}
+</style>

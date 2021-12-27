@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <title>Thời tiết</title>
+        <css src="AGLcomputer_Openweather::css/style.css"/>
+    </head>
+
+    <referenceBlock name="content">
+        <block class="AGLcomputer\Openweather\Block\Openweather" name="AGLcomputer_Openweather" template="AGLcomputer_Openweather::weather.phtml" />
+    </referenceBlock>
+</page>
