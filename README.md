@@ -1,4 +1,4 @@
-## Tỏng quan
+## Tổng quan
 AGLcomputer là hệ thống thương mại điện tử  chuyên dụng cho cửa hàng bán máy tính và thiết bị điện tử. Được phát triển từ mã nguồn mở Magento 2 (phiên bản 2.4) và tích hợp với các phương thức thanh toán online phổ biến hiện nay: momo, vnpay, zalopay. Ngoài ra AGLcomputer còn có module tỉ giá tiền tệ, tra cứu thời tiết, xem các bản tin kinh doanh trên trang VNexpress nhằm phục vụ những nhu cầu khác của người sử dụng.
 
 ## Môi trường phát triển của hệ thống
