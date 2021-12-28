@@ -26,7 +26,7 @@ AGLcomputer là hệ thống thương mại điện tử  chuyên dụng cho c�
 
 ### Cài đặt cơ sở dữ liệu
 ``` sh
-    sudo mysql -u aglcomputer -pPass@magento123 aglcomputer < ./database.sql
+    sudo mysql -u aglcomputer -pPass@magento123 aglcomputer < ./Database/database.sql
 ```
 
 Sau khi cài đặt xong, ta có thể truy cập vào tên miền [aglcomputer.store](http://aglcomputer.store/) trên browser để sử dụng giao diện người dùng và [aglcomputer.store/admin](http://aglcomputer.store/admin/) để sử dụng giao diện quản trị hệ thông.
