@@ -11,13 +11,13 @@ AGLcomputer là hệ thống thương mại điện tử  chuyên dụng cho c�
 - Elasticsearch 7.16.2
 
 ## Hướng dẫn cài đặt
-Ở thư mục aglcomputer được code về
 ### Tải mã nguồn bằng lệnh
 ``` sh
     git clone https://github.com/hca610/aglcomputer.git
 ```
 
-### Cài đặt môi trường phát triển bằng docker:
+### Cài đặt môi trường phát triển bằng docker
+Trong thư mục chứa mã nguồn aglcomputer
 ``` sh
     cd docker_deploy
     docker-compose up --build
@@ -25,6 +25,7 @@ AGLcomputer là hệ thống thương mại điện tử  chuyên dụng cho c�
 ```
 
 ### Cài đặt cơ sở dữ liệu
+Trong thư mục chứa mã nguồn aglcomputer
 ``` sh
     sudo mysql -u aglcomputer -pPass@magento123 aglcomputer < ./Database/database.sql
 ```
