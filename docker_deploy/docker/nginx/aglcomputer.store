@@ -1,0 +1,13 @@
+upstream fastcgi_backend {
+    server   unix:/run/php/php7.3-fpm.sock;
+ }
+
+ server {
+     server_name aglcomputer.store;
+     listen 80;
+     set $MAGE_ROOT /var/www/html/aglcomputer;
+     set $MAGE_MODE default;
+    # or production access_log /var/log/nginx/myMagentoSite.com-access.log;
+     error_log /var/log/nginx/aglcomputer.store-error.log;
+     include /var/www/html/aglcomputer/nginx.conf.sample;
+}

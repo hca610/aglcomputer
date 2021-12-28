@@ -1,0 +1,86 @@
+version: '3.3'
+
+networks:
+  magento:
+    driver: bridge
+services:
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    build:
+      context: .
+      dockerfile: ./docker/nginx/Dockerfile
+    ports:
+      - 8080:80
+    links:
+      - php-fpm
+      - mysql
+      - elasticsearch
+    depends_on:
+      - php-fpm
+      - mysql
+      - elasticsearch
+    volumes:
+      - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ../aglcomputer:/var/www/html/aglcomputer
+    networks:
+      - aglcomputer
+  
+  mysql:
+    image: mysql:8.0
+    restart: always
+    command: --default-authentication-plugin=mysql_native_password
+    container_name: mysql
+    env_file:
+      - .env
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - 3307:3306
+    networks:
+      - aglcomputer
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.16.2
+    container_name: elasticsearch
+    environment:
+      - http.port=9200
+      - "ES_JAVA_OPTS=-Xms128m -Xmx128m"
+      # - network.host= 127.0.0.1
+      - network.bind_host=0.0.0.0
+      - http.cors.enabled=true
+      - http.cors.allow-origin= "*"
+      - transport.host=127.0.0.1
+      - transport.tcp.port=9300
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - 9200:9200
+      - 9300:9300
+    networks:
+      - aglcomputer
+
+  php-fpm:
+    image: php:7.3-fpm
+    container_name: php
+    build:
+      context: .
+      dockerfile: ./docker/php/Dockerfile
+    links:
+      - mysql
+      - elasticsearch
+    depends_on:
+      - mysql
+      - elasticsearch
+    volumes:
+      - ./docker/php/php.ini:/etc/php/7.3/fpm/php.ini
+      - ./docker/php/php_cli.ini:/etc/php/7.3/cli/php.ini
+      - ../aglcomputer:/var/www/html/aglcomputer
+      - ./docker/php/install_magento.sh:/home/install_magento.sh
+    networks:
+      - aglcomputer
