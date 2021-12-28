@@ -14,33 +14,35 @@ $data = json_decode($data, true);
 $last = array_values(array_slice($data['Exrate'], -1))[0];
 ?>
 
-<span>
-	<marquee id="exchange-rate">
-		Tỷ giá tiền tệ so với VNĐ: &nbsp;&nbsp;
-		<?php foreach ($data['Exrate'] as $k => $currency): ?>
-			<?php if ($currency['@attributes']['Buy'] != '-' || $currency['@attributes']['Transfer'] != '-' || $currency['@attributes']['Sell'] != '-'): ?>
-				<span style="color:black"><b><?= $currency['@attributes']['CurrencyName'] ?>:</b></span> &nbsp;
-				<?php if ($currency['@attributes']['Buy'] != '-'): ?>
-					<span style="color:green">Mua</span> <?= $currency['@attributes']['Buy'] ?> &nbsp;
-				<?php endif; ?>
-				<?php if ($currency['@attributes']['Transfer'] != '-'): ?>
-					<span style="color:orange">Chuyển</span> <?= $currency['@attributes']['Transfer'] ?> &nbsp;
-				<?php endif; ?>
-				<?php if ($currency['@attributes']['Sell'] != '-'): ?>
-					<span style="color:red">Bán</span> <?= $currency['@attributes']['Sell'] ?> &nbsp;
-				<?php endif; ?>
-				<?php if ($currency['@attributes']['CurrencyCode'] != $last['@attributes']['CurrencyCode']): ?>
-					&nbsp; --- &nbsp;&nbsp;&nbsp;
-				<?php endif; ?>
+<marquee id="exchange-rate">
+	Tỷ giá tiền tệ so với VNĐ: &nbsp;&nbsp;
+	<?php foreach ($data['Exrate'] as $k => $currency): ?>
+		<?php if ($currency['@attributes']['Buy'] != '-' || $currency['@attributes']['Transfer'] != '-' || $currency['@attributes']['Sell'] != '-'): ?>
+			<span style="color:black"><b><?= $currency['@attributes']['CurrencyName'] ?>:</b></span> &nbsp;
+			<?php if ($currency['@attributes']['Buy'] != '-'): ?>
+				<span style="color:green">Mua</span> <?= $currency['@attributes']['Buy'] ?> &nbsp;
 			<?php endif; ?>
-		<?php endforeach; ?>
-	</marquee>
-</span>
+			<?php if ($currency['@attributes']['Transfer'] != '-'): ?>
+				<span style="color:orange">Chuyển</span> <?= $currency['@attributes']['Transfer'] ?> &nbsp;
+			<?php endif; ?>
+			<?php if ($currency['@attributes']['Sell'] != '-'): ?>
+				<span style="color:red">Bán</span> <?= $currency['@attributes']['Sell'] ?> &nbsp;
+			<?php endif; ?>
+			<?php if ($currency['@attributes']['CurrencyCode'] != $last['@attributes']['CurrencyCode']): ?>
+				&nbsp; --- &nbsp;&nbsp;&nbsp;
+			<?php endif; ?>
+		<?php endif; ?>
+	<?php endforeach; ?>
+</marquee>
 
 <style>
 	#exchange-rate {
-		border: green 3px SOLID;
+		border: #f2703e 3px SOLID;
     	font-size: 17px;
 		font-family: Arial, Helvetica, sans-serif;
+	}
+
+	#maincontent {
+		margin-top: -11px;
 	}
 </style>
