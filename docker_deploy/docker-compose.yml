@@ -1,4 +1,4 @@
-version: '3.3'
+version: '3'
 
 networks:
   magento:
@@ -23,25 +23,19 @@ services:
     volumes:
       - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf
       - ../aglcomputer:/var/www/html/aglcomputer
-    # networks:
-    #   - aglcomputer
 
   mysql:
     image: mysql:8.0
     restart: always
     command: --default-authentication-plugin=mysql_native_password
     container_name: mysql
-    env_file:
-      - .env
     environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: Pass@magento123
+      MYSQL_DATABASE: aglcomputer
+      MYSQL_USER: aglcomputer
+      MYSQL_PASSWORD: Pass@magento123
     ports:
       - 3307:3306
-    # networks:
-    #   - aglcomputer
 
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.16.2
@@ -62,8 +56,6 @@ services:
     ports:
       - 9200:9200
       - 9300:9300
-    # networks:
-    #   - aglcomputer
 
   php-fpm:
     image: php:7.3-fpm
@@ -82,5 +74,3 @@ services:
       - ./docker/php/php_cli.ini:/etc/php/7.3/cli/php.ini
       - ../aglcomputer:/var/www/html/aglcomputer
       - ./docker/php/install_magento.sh:/home/install_magento.sh
-    # networks:
-    #   - aglcomputer
