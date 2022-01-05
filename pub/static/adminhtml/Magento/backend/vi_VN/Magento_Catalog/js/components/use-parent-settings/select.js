@@ -1,0 +1,1 @@
+/var/www/html/aglcomputer/app/code/Magento/Catalog/view/adminhtml/web/js/components/use-parent-settings/select.js

@@ -1,0 +1,1 @@
+/var/www/html/aglcomputer/app/code/Magento/ConfigurableProduct/view/adminhtml/web/js/components/associated-product-insert-listing.js

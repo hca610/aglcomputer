@@ -1,0 +1,1 @@
+/var/www/html/aglcomputer/app/code/Magento/Paypal/view/adminhtml/web/js/rules.js
